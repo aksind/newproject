@@ -27,7 +27,7 @@ def edit(request, id):
         fm=StudentRegistration(request.POST,instance=ed)
         if fm.is_valid():
             fm.save()
-            return redirect('/')
+            return redirect('/add')
         else:
             ed=User1.objects.get(pk=id)
             fm=StudentRegistration(instance=ed)
@@ -37,7 +37,7 @@ def delete(request, id):
     if request.method=='POST':
         de=User1.objects.get(pk=id)
         de.delete()
-    return HttpResponseRedirect('/') 
+    return HttpResponseRedirect('/add') 
 
 def home(request):
     return render(request, 'home.html')
